@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iOS SafariでGooglePlayストアのリンクが非表示になる挙動の検証サイト</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>iOS Safariの<br/>動作確認用デモサイト</h1>
+    <p>Androidアプリのストアリンクが非表示になる挙動の調査</p>
+
+
+    <h4>バッジ画像</h4>
+    <div class="flex">
+      <a href="https://apps.apple.com/jp/app/%E3%83%9E%E3%83%83%E3%83%97/id915056765">
+        <img class="badge" src="/aapl.svg" alt="" height="48" />
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps&hl=ja&gl=US" style="margin-top: -6px;">
+        <img class="badge" src="/goog.png" alt="" width="155" />
+      </a>
+    </div>
+
+    <h4>テキストリンク</h4>
+    <ul>
+      <li><a href="https://apps.apple.com/jp/app/%E3%83%9E%E3%83%83%E3%83%97/id915056765">Apple Map</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps&hl=ja&gl=US">Google Map</a></li>
+    </ul>
+
+    <h4>ホスト名で表示/非表示を判定しているかどうか</h4>
+    <ul>
+      <li><a href="https://play.google.com/store/apps">play.google.com/store/apps</a></li>
+      <li><a href="https://docs.google.com/spreadsheets">docs.google.com/spreadsheets</a></li>
+      <li><a href="https://drive.google.com/">drive.google.com/</a></li>
+    </ul>
+    <p>ホスト（ドメイン名）では判断していない模様。</p>
+
+    <h4>/apps/detailsのパスまでで判断しているか</h4>
+    <ul>
+      <li><a href="https://play.google.com/store">/store</a></li>
+      <li><a href="https://play.google.com/store/apps">/store/apps</a></li>
+      <li><a href="https://play.google.com/store/apps/details">/store/apps/details</a></li>
+    </ul>
+    <p>パスを見て非表示にしているわけでもない模様。</p>
+
+    <h4>クエリパラメータに[id,hl,gl,hoge]のいずれかが含まれる</h4>
+    <span>上からid, hl, gl, hoge</span>
+    <ul>
+      <li><a href="https://play.google.com/store/apps/details?id=xxx">id</a></li>
+      <li><a href="https://play.google.com/store/apps/details?hl=ja">hl</a></li>
+      <li><a href="https://play.google.com/store/apps/details?gl=US">gl</a></li>
+      <li><a href="https://play.google.com/store/apps/details?hoge=fuga">hoge</a></li>
+    </ul>
+    <p>なんでもいいのでクエリパラメータが存在すれば非表示になる</p>
+  </body>
+</html>
